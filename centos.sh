@@ -13,3 +13,18 @@ sudo systemctl start docker
 sudo usermod -aG docker $USER
 
 sudo systemctl enable docker
+
+sudo mkdir -p /etc/systemd/system/docker.service.d
+
+sudo touch /etc/systemd/system/docker.service.d/http-proxy.conf
+
+sudo tee /etc/systemd/system/docker.service.d/http-proxy.conf << 'EOF'
+[Service]
+Environment="HTTP_PROXY=http://proxy.sdc.hp.com:8080/"
+EOF
+
+sudo systemctl daemon-reload
+
+sudo systemctl restart docker
+
+systemctl show --property=Environment docker
