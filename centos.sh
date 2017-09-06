@@ -9,3 +9,5 @@ sudo -E yum makecache fast
 sudo -E yum install docker-ce -y
 
 sudo systemctl start docker
+
+sudo usermod -aG docker $USER
