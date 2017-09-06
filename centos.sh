@@ -11,3 +11,5 @@ sudo -E yum install docker-ce -y
 sudo systemctl start docker
 
 sudo usermod -aG docker $USER
+
+sudo systemctl enable docker
